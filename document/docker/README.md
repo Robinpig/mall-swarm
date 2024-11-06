@@ -1,8 +1,17 @@
 
 
-build docker images
-```shell
-maven install
+
+## env
+
+
+MySQL添加user
+
+```sql
+CREATE database mall default character set utf8mb4 collate utf8mb4_unicode_ci;
+
+CREATE USER 'reader'@'%' IDENTIFIED BY '123456';
+
+GRANT ALL PRIVILEGES on *.* TO 'reader'@'%' WITH GRANT OPTION;
 ```
 
 
@@ -12,7 +21,7 @@ docker network create mall
 ```
 
 
-env 需要 copy nginx整个conf目录
+copy nginx整个conf目录
 
 ES安装plugin后需要重启
 ```shell
@@ -20,7 +29,12 @@ bin/elasticsearch-plugin install https://get.infini.cloud/elasticsearch/analysis
 ```
 
 
+## app
 
 app部署前确保所有prod配置文件加载到nacos
 
+build docker images
+```shell
+maven install
+```
 
