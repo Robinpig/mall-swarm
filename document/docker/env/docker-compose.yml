@@ -114,8 +114,11 @@ services:
   nacos-registry:
     image: nacos/nacos-server:v2.4.3
     container_name: nacos-registry
+    volumes:
+      - ~/mydata/nacos/logs:/home/nacos/logs
     environment:
       - "MODE=standalone"
+      - "management.endpoints.web.exposure.include=prometheus" #暴露prometheus
     ports:
       - 8848:8848
     networks:
